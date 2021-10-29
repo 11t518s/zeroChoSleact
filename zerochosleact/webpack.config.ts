@@ -12,7 +12,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 const config: Configuration = {
-  name: 'sleact',
+  name: 'writeyourname',
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'hidden-source-map' : 'inline-source-map',
   resolve: {
@@ -46,8 +46,9 @@ const config: Configuration = {
           ],
           env: {
             development: {
-              plugins: [require.resolve('react-refresh/babel')],
+              plugins: [['@emotion', {sourceMap: true}], require.resolve('react-refresh/babel')],
             },
+            production: {plugins: ['@emotion']},
           },
         },
         exclude: path.join(__dirname, 'node_modules'),
