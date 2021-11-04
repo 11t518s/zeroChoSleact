@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 
-@Controller('api/dms')
+@Controller('api/workspaces/:url/dms')
 export class DmsController {
   @Get(':id/chats')
   getChat(@Query('perPage') perPage, @Query('page') page) {
